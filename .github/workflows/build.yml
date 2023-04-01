@@ -20,4 +20,4 @@ jobs:
       - name: Установка ocra2
         run: gem install ocra2
       - name: Сборка .exe
-        run: ocra ./KeyBox/source.rb
+        run: ocra ./KeyBox/source.rb --output keybox.exe --add-all-core --no-dep-run --gem-full --chdir-first
