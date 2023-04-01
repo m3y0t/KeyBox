@@ -1,0 +1,23 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Настройка Ruby
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        with:
+          ruby-version: '3.2.2'
+      - name: Установка зависимостей
+        run: bundle install
+      - name: Установка ocra2
+        run: gem install ocra2
+      - name: Сборка .exe
+        run: ocra ./KeyBox/source.rb
